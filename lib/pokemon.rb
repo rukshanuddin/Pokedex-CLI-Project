@@ -1,28 +1,17 @@
 require_relative '../config/environment'
 
-class Pokemon                                               #Define Pokemon class
 
-    attr_accessor :name, :url
-    attr_reader :info, :number
-    @@all = []
-    @@all_names = []
-    def initialize(name, url)
-        @name = name
+class Pokedex
+
+    attr_accessor :version, :url, :info, :index
+
+        @@all = []
+    def initialize(version, url, info, index)
+        @version = version
         @url = url
-        @number = number
+        @index = index
+        @info = info
         @@all << self
-        @@all_names << self.name.downcase
-    end
-    def self.all_names
-        @@all_names
-    end
-
-    def number=(number)
-        @number = number
-    end
-
-    def self.clear_names
-        @@all_names.clear
     end
 
     def self.all
@@ -32,4 +21,5 @@ class Pokemon                                               #Define Pokemon clas
     def self.clear
         @@all.clear
     end
+
 end
