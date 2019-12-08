@@ -22,4 +22,7 @@ class Pokedex
         @@all.clear
     end
 
+    def self.start
+        CLI.new
+    end
 end
