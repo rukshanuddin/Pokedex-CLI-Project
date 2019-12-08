@@ -1,7 +1,5 @@
 require_relative '../config/environment'
 
-VERSION = "0.10.0"
-
 class Pokemon                                               #Define Pokemon class
 
     attr_accessor :name, :url
