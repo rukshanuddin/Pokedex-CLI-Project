@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 
 Gem::Specification.new do |spec|
-  spec.name          = "pokedex"
+  spec.name          = "rukshanuddin"
   spec.version       = "0.10.0"
   spec.authors       = ["Rukshan Uddin"]
   spec.email         = ["rukshan.uddin@gmail.com"]
