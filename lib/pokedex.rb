@@ -1,6 +1,5 @@
 require_relative '../config/environment'
 
-VERSION = "0.10.0"
 class Pokedex
 
     attr_accessor :version, :url, :info, :index

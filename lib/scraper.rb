@@ -5,7 +5,7 @@ class Scrape
     
     def self.pokedex
         #Scrapes list of pokedex
-        doc = Nokogiri::HTML(open("https://pokemondb.net/pokedex"))
+        doc = Nokogiri::HTML(URI.open('http://pokemondb.net/pokedex'))
         pokedex_array = doc.css(".grid-row li")
 
         pokedex_array.each.with_index(1) do |pokedex, idx|
@@ -20,7 +20,7 @@ class Scrape
 
     def self.populate_pokemon(input)
         #Scrapes list of pokemon and creates Pokemon objects
-        list_doc = Nokogiri::HTML(open(Scrape.dex_url(input)))
+        list_doc = Nokogiri::HTML(URI.open(Scrape.dex_url(input)))
         pokemon_array = list_doc.css("a.ent-name")       
         pokemon_array.each.with_index(1) do |pokemon, idx|
                 url = "https://pokemondb.net#{pokemon.attributes["href"].value}" if !nil
@@ -39,15 +39,15 @@ class Scrape
     def self.pokemon(pokemon)
         #Scrapes info for pokemon based on name
         if pokemon == "nidoran♂"
-            puts Nokogiri::HTML(open("https://pokemondb.net/pokedex/nidoran-m")).css(".grid-col.span-md-6.span-lg-8").text
+            puts Nokogiri::HTML(URI.open("https://pokemondb.net/pokedex/nidoran-m")).css(".grid-col.span-md-6.span-lg-8").text
         elsif pokemon == "nidoran♀"
-            puts Nokogiri::HTML(open("https://pokemondb.net/pokedex/nidoran-f")).css(".grid-col.span-md-6.span-lg-8").text
+            puts Nokogiri::HTML(URI.open("https://pokemondb.net/pokedex/nidoran-f")).css(".grid-col.span-md-6.span-lg-8").text
         elsif pokemon == "farfetch'd"
-            puts Nokogiri::HTML(open("https://pokemondb.net/pokedex/farfetchd")).css(".grid-col.span-md-6.span-lg-8").text
+            puts Nokogiri::HTML(URI.open("https://pokemondb.net/pokedex/farfetchd")).css(".grid-col.span-md-6.span-lg-8").text
         elsif pokemon == "mr. mime"
-            puts Nokogiri::HTML(open("https://pokemondb.net/pokedex/mr-mime")).css(".grid-col.span-md-6.span-lg-8").text
+            puts Nokogiri::HTML(URI.open("https://pokemondb.net/pokedex/mr-mime")).css(".grid-col.span-md-6.span-lg-8").text
         else   
-            puts Nokogiri::HTML(open("https://pokemondb.net/pokedex/#{pokemon}")).css(".grid-col.span-md-6.span-lg-8").text.to_s.yellow
+            puts Nokogiri::HTML(URI.open("https://pokemondb.net/pokedex/#{pokemon}")).css(".grid-col.span-md-6.span-lg-8").text.to_s.yellow
         end
     end
 
